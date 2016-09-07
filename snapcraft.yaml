@@ -26,15 +26,12 @@ parts:
     plugin: python3
     source: https://github.com/liu-xiao-guo/bluepy
     source-type: git
-    build-packages: [libglib2.0-dev, gcc]
-    requirements: ./requirements.txt
-
-  bluez:
-    plugin: nil
     stage-packages:
       - bluetooth
       - bluez
       - blueman
+    build-packages: [libglib2.0-dev, gcc]
+    requirements: ./requirements.txt
       
   mosquitto:
     plugin: copy
