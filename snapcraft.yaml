@@ -1,0 +1,48 @@
+name: sensortag
+version: "1.0"
+summary: SensorTag Python Bluetooth LE implementation
+description: API and command line tools for Python Bluetooth Low Energy access
+confinement: devmode
+
+apps:
+  sensortag:
+    command: usr/bin/sensortag
+  sensordata:
+    command: usr/bin/sensordata
+  blescan:
+    command: usr/bin/blescan
+  # mosquito server
+  mosquitto:
+    command: usr/sbin/mosquitto -c $SNAP/mosquitto.conf
+    daemon: simple
+    plugs: [network, network-bind]
+  # mosquitto subscriber
+  subscribe:
+    command: bin/subscribe
+    plugs: [network, network-bind]
+
+parts:
+  bluepy:
+    plugin: python3
+    source: https://github.com/liu-xiao-guo/bluepy
+    source-type: git
+    build-packages: [libglib2.0-dev, gcc]
+    requirements: ./requirements.txt
+
+  bluez:
+    plugin: nil
+    stage-packages:
+      - bluetooth
+      - bluez
+      - blueman
+      
+  mosquitto:
+    plugin: copy
+    stage-packages: [mosquitto]
+    files:
+      mosquitto.conf: mosquitto.conf
+
+  mqtt-client:
+    plugin: copy
+    files:
+      subscribe.py: bin/subscribe
