@@ -2,13 +2,15 @@ name: sensortag
 version: "1.0"
 summary: SensorTag Python Bluetooth LE implementation
 description: API and command line tools for Python Bluetooth Low Energy access
-confinement: devmode
+confinement: strict
 
 apps:
   sensortag:
     command: usr/bin/sensortag
+    plugs: [bluez]
   sensordata:
     command: usr/bin/sensordata
+    plugs: [bluez]
   blescan:
     command: usr/bin/blescan
   # mosquito server
