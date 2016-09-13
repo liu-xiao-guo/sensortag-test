@@ -20,6 +20,10 @@ apps:
   subscribe:
     command: bin/subscribe
     plugs: [network, network-bind]
+  rfkill:
+    command: usr/sbin/rfkill
+  sh:
+    command: bin/sh
 
 parts:
   bluepy:
@@ -30,8 +34,14 @@ parts:
       - bluetooth
       - bluez
       - blueman
+      #- mosquitto
     build-packages: [libglib2.0-dev, gcc]
     requirements: ./requirements.txt
+
+  rfkill:
+    plugin: nil
+    stage-packages:
+      - rfkill
       
   mosquitto:
     plugin: copy
@@ -43,3 +53,4 @@ parts:
     plugin: copy
     files:
       subscribe.py: bin/subscribe
+      ./bin/sh: bin/sh
