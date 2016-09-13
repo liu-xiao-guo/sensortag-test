@@ -24,6 +24,8 @@ apps:
     command: usr/sbin/rfkill
   sh:
     command: bin/sh
+  ctrl:
+    command: usr/bin/bluetoothctl
 
 parts:
   bluepy:
