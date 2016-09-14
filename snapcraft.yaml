@@ -7,10 +7,10 @@ confinement: strict
 apps:
   sensortag:
     command: usr/bin/sensortag
-    plugs: [bluez]
+    plugs: [home,bluez]
   sensordata:
     command: usr/bin/sensordata
-    plugs: [bluez]
+    plugs: [home,bluez]
   blescan:
     command: usr/bin/blescan
   # mosquito server
