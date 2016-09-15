@@ -3,4 +3,7 @@
 # Bring up the bluetooth
 $SNAP/bin/hciconfig hci0 up
 
+# wait for a while before we retrieve data from bluetooth
+sleep 10
+
 exec "$SNAP/usr/bin/sensordata" "$@"
