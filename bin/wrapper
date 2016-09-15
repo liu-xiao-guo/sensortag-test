@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Bring up the bluetooth
+$SNAP/bin/hciconfig hci0 up
+
+exec "$SNAP/usr/bin/sensordata" "$@"

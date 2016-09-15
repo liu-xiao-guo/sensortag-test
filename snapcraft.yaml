@@ -11,6 +11,10 @@ apps:
   sensordata:
     command: usr/bin/sensordata
     plugs: [home,bluez]
+  sensor:
+    command: usr/bin/wrapper
+    daemon: simple
+    plugs: [home,bluez]
   blescan:
     command: usr/bin/blescan
   # mosquito server
@@ -57,4 +61,4 @@ parts:
     plugin: copy
     files:
       subscribe.py: bin/subscribe
-      ./bin/sh: bin/sh
+      ./bin: bin
