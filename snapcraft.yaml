@@ -13,7 +13,7 @@ apps:
     plugs: [home,bluez]
   sensor:
     command: bin/wrapper
-    daemon: simple
+    # daemon: simple
     plugs: [home,bluez]
   blescan:
     command: usr/bin/blescan
