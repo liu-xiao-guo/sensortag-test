@@ -6,20 +6,20 @@ confinement: strict
 
 apps:
   sensortag:
-    command: usr/bin/sensortag
+    command: bin/sensortag
     plugs: [home,bluez]
   sensordata:
-    command: usr/bin/sensordata
+    command: bin/sensordata
     plugs: [home,bluez]
   sensor:
     command: bin/wrapper
     plugs: [home,bluez]
-  sensord:
-    command: bin/wrapper
-    daemon: simple
-    plugs: [home,bluez]
-  blescan:
-    command: usr/bin/blescan
+  #sensord:
+  #  command: bin/wrapper
+  #  daemon: simple
+  #  plugs: [home,bluez]
+  #blescan:
+  #  command: usr/bin/blescan
   # mosquito server
   mosquitto:
     command: usr/sbin/mosquitto -c $SNAP/mosquitto.conf
